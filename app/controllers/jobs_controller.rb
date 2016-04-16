@@ -25,14 +25,13 @@ class JobsController < ApplicationController
   # POST /jobs.json
   def create
     @job = Job.new(job_params)
-    user_id = current_user.id 
+    current_user.id = user_id
 
     respond_to do |format|
       if @job.save
         format.html { redirect_to @job, notice: 'Job was successfully created.' }
         format.json { render :show, status: :created, location: @job }
       else
-        flash.now[:danger] = "Invalid email/password"
         format.html { render :new }
         format.json { render json: @job.errors, status: :unprocessable_entity }
       end

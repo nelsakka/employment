@@ -45,7 +45,6 @@ class RolesController < ApplicationController
         format.html { redirect_to @role, notice: 'Role was successfully updated.' }
         format.json { render :show, status: :ok, location: @role }
       else
-        flash.now[:danger] = "Invalid email/password"
         format.html { render :edit }
         format.json { render json: @role.errors, status: :unprocessable_entity }
       end

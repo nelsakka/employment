@@ -31,7 +31,7 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
-        flash.now[:danger] = "Invalid email/password"
+        #flash.now[:danger] = "Invalid email/password user"
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -70,6 +70,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :password, :role_id, :admin)
+      params.require(:user).permit(:email, :password, :name, :role_id)
     end
 end

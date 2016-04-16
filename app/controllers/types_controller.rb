@@ -31,7 +31,6 @@ class TypesController < ApplicationController
         format.html { redirect_to @type, notice: 'Type was successfully created.' }
         format.json { render :show, status: :created, location: @type }
       else
-        flash.now[:danger] = "Invalid email/password"
         format.html { render :new }
         format.json { render json: @type.errors, status: :unprocessable_entity }
       end

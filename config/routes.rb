@@ -5,14 +5,20 @@ Rails.application.routes.draw do
   resources :users
   root to: 'visitors#index'
 
-  resources :sessions, only: [:new, :create, :destroy]
+  #get 'signup' => 'users#new'
+  #resources :sessions, only: [:new, :create, :destroy]
 
   # post 'employment/'
   # get 'employment/new' => 'employment#new', as: :login
   # delete 'employment/delete' => 'employment#destroy', as: :logout
 
-  get    'signup'  => 'users#new'
-  get    'login'   => 'sessions#new'
-  post   'login'   => 'sessions#create'
-  delete 'logout'  => 'sessions#destroy'
+  # get    'login'   => 'sessions#new'
+  # post   'login'   => 'sessions#create'
+  # delete 'logout'  => 'sessions#destroy'
+
+  get 'sessions/new' => 'sessions#new', as: :login
+  post 'sessions/new'=> 'sessions#create'
+  delete 'visitors/index' => 'sessions#destroy', as: :logout
+  get 'users/new' => 'users#new', as: :signup
+  post 'users/new' => 'users#new'
 end
