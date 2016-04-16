@@ -1,5 +1,7 @@
 class RolesController < ApplicationController
   before_action :set_role, only: [:show, :edit, :update, :destroy]
+  before_action :admin_only
+
 
   # GET /roles
   # GET /roles.json
@@ -71,4 +73,11 @@ class RolesController < ApplicationController
     def role_params
       params.require(:role).permit(:name)
     end
+
+    def admin_only
+      if !current_user.admin?
+        redirect_to root_path
+      end 
+    end
+    
 end
