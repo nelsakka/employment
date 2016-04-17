@@ -6,4 +6,6 @@ class Job < ActiveRecord::Base
 	validates :overview, presence: true
 	validates :type_id, presence: true
 	validates :user_id, presence: true
+
+	scope :open, -> { where(filled: false) }
 end

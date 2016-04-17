@@ -8,6 +8,5 @@ class User < ActiveRecord::Base
 	validates :role_id, presence: true
 
 	before_save { self.email = email.downcase }
-	scope :open, -> { where(filled: false) }
 
 end
